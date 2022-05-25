@@ -1,24 +1,27 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'homepage.dart';
 
-void main() {
-  runApp(const App());
+import 'package:schoolmanagement/LoginScreen.dart';
+// ignore: unused_import
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
 }
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
+class MyApp extends StatelessWidget {
+  // This widget is the root of application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.white,
+      title: 'Email And Password Login',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
       debugShowCheckedModeBanner: false,
-      title: 'Login UI',
-      home: homepage(),
+      home: LoginScreen(),
     );
   }
 }
